@@ -9,6 +9,7 @@ group :development do
   gem 'vagrant',      git: 'git://github.com/mitchellh/vagrant.git'
   gem 'coveralls',    require: false
   gem 'simplecov',    require: false
+  gem 'vagrant-spec', git: 'https://github.com/mitchellh/vagrant-spec.git'
 end
 
 group :plugins do
