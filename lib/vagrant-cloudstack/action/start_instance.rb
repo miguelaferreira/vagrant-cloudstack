@@ -54,7 +54,7 @@ module VagrantPlugins
           @logger.info("Time to instance ready: #{env[:metrics]["instance_ready_time"]}")
 
           if !env[:interrupted]
-            env[:metrics]["instance_ssh_time"] = Util::Timer.time do
+            env[:metrics]["instance_communicator_time"] = Util::Timer.time do
               # Wait for communicator to be ready.
               communicator = env[:machine].config.vm.communicator
               communicator = "SSH" if communicator.nil?
@@ -67,7 +67,7 @@ module VagrantPlugins
               end
             end
 
-            @logger.info("Time for SSH ready: #{env[:metrics]["instance_ssh_time"]}")
+            @logger.info("Time for #{env[:machine].config.vm.communicator} ready: #{env[:metrics]["instance_communicator_time"]}")
 
             # Ready and booted!
             env[:ui].info(I18n.t("vagrant_cloudstack.ready"))
