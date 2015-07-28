@@ -209,7 +209,7 @@ module VagrantPlugins
           if server.password_enabled and server.respond_to?("job_id")
             server_job_result = env[:cloudstack_compute].jobs.get(server.job_id).job_result
             password = server_job_result["virtualmachine"]["password"]
-            env[:ui].info("Password of virtualmachine: #{password}")
+            env[:ui].info("Password of virtual machine: #{password}")
             # Set the password on the current communicator
             domain_config.vm_password = password
 
