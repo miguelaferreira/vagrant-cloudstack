@@ -267,7 +267,7 @@ module VagrantPlugins
             @logger.info("Time for #{env[:machine].config.vm.communicator} ready: #{env[:metrics]["instance_communicator_time"]}")
 
             # Ready and booted!
-            env[:ui].info(I18n.t("vagrant_cloudstack.ready"))
+            env[:ui].info(I18n.t("vagrant_cloudstack.ready")) unless env[:interrupted]
           end
 
           # Terminate the instance if we were interrupted
