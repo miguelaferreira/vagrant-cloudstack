@@ -57,7 +57,7 @@ module VagrantPlugins
             env[:metrics]["instance_communicator_time"] = Util::Timer.time do
               # Wait for communicator to be ready.
               communicator = env[:machine].config.vm.communicator
-              communicator = "SSH" if communicator.nil?
+              communicator = 'ssh' if communicator.nil?
               env[:ui].info(I18n.t("vagrant_cloudstack.waiting_for_communicator", :communicator => communicator.to_s.upcase))
               while true
                 # If we're interrupted then just back out
