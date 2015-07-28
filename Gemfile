@@ -13,4 +13,5 @@ end
 
 group :plugins do
   gem "vagrant-cloudstack", path: "."
+  gem 'vagrant-winrm'
 end
