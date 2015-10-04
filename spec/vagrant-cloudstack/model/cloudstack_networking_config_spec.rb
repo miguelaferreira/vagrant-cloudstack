@@ -348,4 +348,32 @@ describe CloudstackNetworkingConfig do
       expect(config.pf_public_rdp_port).to eq(1)
     end
   end
+
+  describe '#needs_public_port?' do
+    it 'returns true if no public port is defined' do
+      config = CloudstackNetworkingConfig.new(ConfigMock.new({}))
+
+      expect(config.needs_public_port?).to eq(true)
+    end
+
+    it 'returns false if SSH public port is defined' do
+      config = CloudstackNetworkingConfig.new(ConfigMock.new(
+        {
+          'pf_public_port' => 1
+        }
+      ))
+
+      expect(config.needs_public_port?).to eq(false)
+    end
+
+    it 'returns false if RDP public port is defined' do
+      config = CloudstackNetworkingConfig.new(ConfigMock.new(
+        {
+          'pf_public_rdp_port' => 1
+        }
+      ))
+
+      expect(config.needs_public_port?).to eq(false)
+    end
+  end
 end
